@@ -16,6 +16,6 @@ if (srcUrl) {
     const updatedSrcUrl = `${srcUrl.url}&loggedIn=${loggedIn}&rehydrate=${rehydrate}&verifier=${verifier}&selectedAddress=${selectedAddress}&state=${state}`;
 
     // Update the src attribute of the iframe with the new URL
-    window.parent.document.getElementById("upbond-iframe").src = updatedSrcUrl;
+    window.document.getElementById("upbond-iframe").src = updatedSrcUrl;
   }
 }
