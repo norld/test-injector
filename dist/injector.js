@@ -17,5 +17,6 @@ if (srcUrl) {
 
     // Update the src attribute of the iframe with the new URL
     window.parent.document.getElementById("upbond-iframe").src = updatedSrcUrl;
+    window.history.replaceState(null, "", window.location.origin + window.location.pathname);
   }
 }
