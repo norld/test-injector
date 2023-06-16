@@ -40,6 +40,7 @@ window.addEventListener("message", function (event) {
     localStorage.setItem("upbond.selectedAddress", event.data.value);
   }
   if (event.data.type === "UPBOND_LOGOUT") {
-    localStorage.setItem("upbond_widget", event.data.value);
+    localStorage.removeItem("upbond.selectedAddress");
+    localStorage.removeItem("upbond_widget");
   }
 });
