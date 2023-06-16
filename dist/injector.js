@@ -23,9 +23,7 @@ if (srcUrl) {
 }
 
 window.addEventListener("message", function (event) {
-  console.log("Message received from the child: " + event.data); // Message received from child
   if (event.data.type === "UPBOND_WIDGET_REDIRECT") {
-    console.log("UPBOND_WIDGET_REDIRECT");
     window.location.href = event.data.value;
   }
 });
