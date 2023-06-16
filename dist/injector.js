@@ -26,4 +26,7 @@ window.addEventListener("message", function (event) {
   if (event.data.type === "UPBOND_WIDGET_REDIRECT") {
     window.location.href = event.data.value;
   }
+  if (event.data.type === "UPBOND_SELECTED_ADDRESS") {
+    localStorage.setItem("upbond.selectedAddress", event.data.value);
+  }
 });
