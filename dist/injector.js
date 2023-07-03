@@ -3,7 +3,7 @@ const srcUrl = window.parent.document.getElementById("upbond-iframe");
 if (srcUrl) {
   const windowEthereum = window.ethereum;
   console.log("@windowEthereum 1", windowEthereum)
-  if(windowEthereum) srcUrl.contentWindow.postMessage({ type: "PROVIDER", value: windowEthereum }, "*");
+  if(windowEthereum) srcUrl.contentWindow.postMessage({ type: "PROVIDER", value: JSON.stringify(windowEthereum) }, "*");
   // Create a new URL object of the parent page
   const parentUrl = new URL(window.parent.document.location.href);
   const backupUrl = localStorage.getItem("upbond_widget");
