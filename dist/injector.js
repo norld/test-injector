@@ -11,8 +11,10 @@ if (srcUrl) {
   let selectedAddress = parentUrl.searchParams.get("selectedAddress");
   let state = parentUrl.searchParams.get("state");
   let verifier = parentUrl.searchParams.get("verifier");
+
   if (backupUrl) {
     const uri = JSON.parse(backupUrl);
+    // console.log("GET URI:", uri);
     if (uri) {
       loggedIn = uri.loggedIn;
       rehydrate = uri.rehydrate;
@@ -21,6 +23,7 @@ if (srcUrl) {
       verifier = uri.verifier;
     }
   }
+
   if (loggedIn && verifier && rehydrate && selectedAddress && state) {
     // Add the query parameter to the updatedSrcUrl variable
     const updatedSrcUrl = `${srcUrl.src}&loggedIn=${loggedIn}&rehydrate=${rehydrate}&verifier=${verifier}&selectedAddress=${selectedAddress}&state=${state}`;
@@ -37,10 +40,13 @@ window.addEventListener("message", function (event) {
     window.location.href = event.data.value;
   }
   if (event.data.type === "UPBOND_SELECTED_ADDRESS") {
-    localStorage.setItem("upbond.selectedAddress", event.data.value);
+    localStorage.setItem("upbond_selectedAddress", event.data.value);
+  }
+  if (event.data.type === "UPBOND_METADATA") {
+    localStorage.setItem("upbond_metadata", JSON.stringify(event.data.value));
   }
   if (event.data.type === "UPBOND_LOGOUT") {
-    localStorage.removeItem("upbond.selectedAddress");
+    localStorage.removeItem("upbond_selectedAddress");
     localStorage.removeItem("upbond_widget");
   }
 });
